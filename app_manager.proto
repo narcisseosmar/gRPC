@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package appmanager;
+
+service AppManager {
+  rpc DeployApp (DeployAppRequest) returns (DeployAppResponse);
+  rpc MonitoringStatus (MonitoringStatusRequest) returns (MonitoringStatusResponse);
+  rpc ConfigureService (ConfigureServiceRequest) returns (ConfigureServiceResponse);
+}
+
+message DeployAppRequest {
+  string app_name = 1;
+  string version = 2;
+  string config = 3;
+}
+
+message DeployAppResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message MonitoringStatusRequest {
+  string app_name = 1;
+}
+
+message MonitoringStatusResponse {
+  string status = 1;
+  string details = 2;
+}
+
+message ConfigureServiceRequest {
+  string app_name = 1;
+  string config = 2;
+}
+
+message ConfigureServiceResponse {
+  bool success = 1;
+  string message = 2;
+}
